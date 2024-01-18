@@ -1,0 +1,37 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def allureVersion = "2.24.0",
+    selenideVersion = "7.0.2",
+    junitVersion = "5.10.1",
+    ownerVersion = "1.0.12"
+
+
+dependencies {
+    testImplementation(
+            'org.aspectj:aspectjweaver:1.9.20.1',
+            "com.codeborne:selenide:$selenideVersion",
+            "org.hamcrest:hamcrest-all:1.3",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            'io.rest-assured:rest-assured:5.3.2',
+            "io.qameta.allure:allure-java-commons:$allureVersion",
+            "io.qameta.allure:allure-rest-assured:$allureVersion",
+            "org.junit.jupiter:junit-jupiter-api:$junitVersion",
+            "org.aeonbits.owner:owner:$ownerVersion")
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Test).configureEach {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+    System.setProperty("junit.jupiter.extensions.autodetection.enabled", "true")
+}
