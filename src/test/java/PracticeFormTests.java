@@ -2,6 +2,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import pageObjects.RegistrationForm;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -12,6 +13,7 @@ import static com.codeborne.selenide.files.DownloadActions.click;
 public class PracticeFormTests {
 //    https://demoqa.com/automation-practice-form
 
+    RegistrationForm registrationForm = new RegistrationForm();
     @BeforeAll
     static void beforeAll(){
         Configuration.holdBrowserOpen = true;
@@ -20,51 +22,42 @@ public class PracticeFormTests {
 
     @Test
     void TestInputValues(){
-        open("https://demoqa.com/automation-practice-form");
+        registrationForm.openPage("https://demoqa.com/automation-practice-form");
         //Спросить у Рустама что оно делает
         Selenide.executeJavaScript("$('#fixedban').remove()");
         Selenide.executeJavaScript("$('footer').remove()");
 
-        $("[id=firstName]").setValue("First Input");
+        registrationForm.setValue("[id=firstName]","Nartay");
 
-        $("[id=lastName]").setValue("Last Input");
+        registrationForm.setValue("[id=lastName]","Esbolganov");
 
-        $("[id = userEmail]").setValue("dev@mail.ru");
+        registrationForm.setValue("[id = userEmail]", "nyesbolganov@jmart.kz");
 
-        $("#genterWrapper").$(byText("Female")).click();
+        registrationForm.setGender("#genterWrapper", "Female");
 
-        $("[id=userNumber]").setValue("1234567890");
+        registrationForm.setValue("[id=userNumber]", "8707250760");
 
-        $(".react-datepicker__input-container").click();
+        registrationForm.setDate("November", "7", "2003");
 
-        $(".react-datepicker__year-select").$(byText("2003")).click();
+        registrationForm.setSubject("[id=subjectsInput]", "Biol");
 
-        $(".react-datepicker__month-select").$(byText("November")).click();
+        registrationForm.setHobby("#hobbiesWrapper","Reading");
 
-        $(".react-datepicker__month").$(byText("7")).click();
+        registrationForm.setFile("#uploadPicture", "pictures/picture.JPG");
 
-        $("[id=subjectsInput]").setValue("Biol").pressEnter();
+        registrationForm.setValue("#currentAddress", "address");
 
-        $("#hobbiesWrapper").parent().$(byText("Reading")).click();
+        registrationForm.setStateAndCity("#state", "#stateCity-wrapper", "Uttar Pradesh");
 
-        $("#uploadPicture").uploadFromClasspath("pictures/picture.JPG");
+        registrationForm.setStateAndCity("#city","#stateCity-wrapper", "Lucknow");
 
-        $("#currentAddress").setValue("address");
-
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("Uttar Pradesh")).click();
-
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Lucknow")).click();
-
-        $("[id=submit]").click();
+        $("#submit").click();
 
         $(".modal-body").shouldHave(
-                text("First Input"),
-                text("Last Input"),
-                text("dev@mail.ru"),
+                text("Nartay Esbolganov"),
+                text("nyesbolganov@jmart.kz"),
                 text("Female"),
-                text("1234567890"),
+                text("8707250760"),
                 text("07 November,2003"),
                 text("Biology"),
                 text("Reading"),
