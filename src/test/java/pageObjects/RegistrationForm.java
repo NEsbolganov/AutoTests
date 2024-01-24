@@ -8,6 +8,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationForm {
 
+    public static String userName, lastName, userEmail, currentAddress;
+
     private static final CalendarComponent calendarComponent = new CalendarComponent();
 
     public RegistrationForm() {
