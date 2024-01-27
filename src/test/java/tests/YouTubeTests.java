@@ -1,18 +1,21 @@
 package tests;
 
+import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
-public class YouToubeTests {
+public class YouTubeTests {
 
     @Test
     void setantaSportsAssertCommentsCount(){
+        Configuration.holdBrowserOpen =true;
         open("https://www.youtube.com/");
         $("#search-form").click();
-        $("#search-form").setValue("Setanta Sports Football");
-        $(".ytd-channel-name").$(byText("Setanta Sports Football")).click();
+        $("[name=search_query]").setValue("Setanta Sports Football").pressEnter();
+        $("#channel-title").$(byText("Setanta Sports Football")).click();
+        $("#tabsContainer").$(byText("Videos")).click();
+        $("#video-title-link").$(byText("Бавария VS Унион Берлин - Обзор")).hover();
     }
 }

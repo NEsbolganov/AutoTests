@@ -43,24 +43,5 @@ public class TextBoxTests {
 
     }
 
-    public static String[] inputter(){
-        Scanner testValuesInput = new Scanner(System.in);
-
-        String[] result = new String[4];
-
-        System.out.print("userName: ");
-        String userName = testValuesInput.next();
-        System.out.println("\n userEmail: ");
-        String userEmail = testValuesInput.next();
-        System.out.println("\n currentAddress: ");
-        String currentAddress = testValuesInput.next();
-        System.out.println("\n permanentAddress: ");
-        String permanentAddress = testValuesInput.next();
-        result[0] = userName;
-        result[1] = userEmail;
-        result[2] = currentAddress;
-        result[3] = permanentAddress;
-        return result;
-    }
 
 }
