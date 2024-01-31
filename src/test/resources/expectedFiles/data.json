@@ -1,0 +1,11 @@
+{
+  "name": "Nartay",
+  "age" : "20",
+  "isClever" : true,
+  "hobbies": ["Football","Beer"],
+  "passport": {
+    "id": "031107501388",
+    "gender": "male"
+  },
+  "phone": "87072507609"
+}

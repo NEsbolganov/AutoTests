@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -54,8 +55,13 @@ public class LeetCodeTests {
     @Test
     @Disabled
     void leetcodeRedeemElementCost(){
-        open("https://leetcode.com/problemset/");
-        $(byClassName("truncate")).$(byText("1. Two Sum")).click();
+//        open("https://leetcode.com/problemset/");
+        open("https://leetcode.com/problems/two-sum/description/");
+//        $("a[href='/problems/two-sum']").click();
+        $(byText("Enable Dynamic Layout")).click();
+        $(byText("Skip tour")).click();
+        String acceptanceRate =  $(".text-md font-medium").getText();
+        System.out.println(acceptanceRate);
     }
 
     @Test
