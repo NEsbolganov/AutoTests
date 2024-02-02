@@ -1,0 +1,17 @@
+{
+  "base": {
+    "logo": "",
+    "project": "My autotests project",
+    "environment": "qa.guru",
+    "comment": "Learning telegram notifications for autotests",
+    "reportLink": "some link",
+    "language": "ru",
+    "allureFolder": "allure-report/",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "6913479816:AAHbQxFy79mjw394_0X17LaGX-mLTgq1D0k",
+    "chat": "-4137811624",
+    "replyTo": ""
+  }
+}
