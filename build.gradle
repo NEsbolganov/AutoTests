@@ -45,6 +45,10 @@ dependencies {
             'com.codeborne:xls-test:1.4.3',
             'com.opencsv:opencsv:5.7.1',
             'com.google.code.gson:gson:2.10.1',
+            'io.github.bonigarcia:webdrivermanager:5.6.3',
+            'org.aeonbits.owner:owner:1.0.4',
+            'org.assertj:assertj-core:3.25.2'
+
     )
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
@@ -59,6 +63,11 @@ tasks.withType(Test).configureEach {
     useJUnitPlatform()
     systemProperties(System.getProperties())
     System.setProperty("junit.jupiter.extensions.autodetection.enabled", "true")
+}
+
+test{
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
 }
 
 task simple_test(type : Test){
