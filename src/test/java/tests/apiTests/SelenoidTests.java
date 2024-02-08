@@ -110,4 +110,6 @@ public class SelenoidTests {
                 .body("browsers.chrome",hasKey("100.0"))
                 .body(matchesJsonSchemaInClasspath("schemas/status-schema-response.json"));
     }
+
+
 }
